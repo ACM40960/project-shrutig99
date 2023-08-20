@@ -1,9 +1,5 @@
 # Visual Storytelling: AI-Powered Image Caption Generation
 
-
-## Table of Contents
-
-
 ## Introduction
 
 Step into a world where pictures transform into stories, and machines learn to speak the language of images. In today's digital age, the convergence of artificial intelligence and computer vision has propelled the development of novel applications that bridge the gap between visual data and human language. Among these, image captioning stands out as a compelling endeavor, wherein machines are tasked with automatically generating descriptive textual explanations for images. This transformative technology holds the potential to revolutionize various domains, including accessibility for visually impaired individuals, content organization, and immersive human-computer interactions, thereby motivating extensive research and innovation in the field of AI-driven image captioning.
