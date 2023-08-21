@@ -104,6 +104,9 @@ The complete ML Model is shown below.
 The core of the architecture is a combination of a Convolutional Neural Network (CNN) and a Recurrent Neural Network (RNN). The CNN processes the input image and extracts its visual features, which are then used as input to the RNN. The RNN, typically implemented as a Long Short-Term Memory (LSTM) network, takes these visual features and generates the caption sequentially, word by word.
 The training procedure involves exposing the model to pairs of images and associated captions. The model learns to establish connections between image features and textual content. The CNN and RNN parameters are optimized to minimize the divergence between generated captions and ground truth captions in the training dataset.
 
+A neural network model is defined that takes two inputs: a numeric feature vector (2048 dimensions) and a sequence of text data (with varying lengths). The model consists of a dense layer for the numeric input, an embedding layer followed by an `LSTM` layer for the text input. The outputs of both branches are added and further processed through dense layers, finally producing a `softmax-based` classification output. The model is compiled with categorical cross-entropy loss, `Adam optimizer`, and accuracy metric for training.
+`Adam Optimizer` is preferred as Adam (Adaptive Momentum) algorithm performed the best results since we can keep track of the previous gradient and not end up in a local minima.
+
 Hypermeters in concern:
 
 - `batch_size` - the batch size of each training batch. It is the number of image-caption pairs used to amend the model weights in each training step.
@@ -127,10 +130,89 @@ This flattened output (vector of embedded image features) is fed into the decode
 
 ![RNN Decoder](https://github.com/ACM40960/project-shrutig99/assets/118550614/8232847e-b34f-4024-8074-e902717b257a)
 
+The Decoder's job is to **look at the encoded image and generate a caption word by word.**
+
+Since it's generating a sequence, it would need to be a Recurrent Neural Network (RNN). We will use an LSTM.
+
+The LSTM in this model processes textual input through embedding and captures context, while image features are handled by dense layers. The LSTM's output combines text and image information through addition, followed by dense layers that refine the representation. The final dense layer with softmax generates the next caption word, blending sequential and visual cues for coherent image captioning.
+
 LSTM (Long Short-Term Memory) is a widely adopted decoder in AI image caption generator models due to its sequential processing capability and memory retention. As the decoder, LSTM takes the high-level visual features extracted from the input image by the encoder and generates captions word by word, maintaining contextual coherence. Its ability to capture long-range dependencies and handle variable-length sequences makes it ideal for language generation tasks. By considering both the previously generated words and the encoded image features, LSTM ensures that the generated captions are contextually meaningful and closely aligned with the visual content, resulting in accurate and fluent image descriptions.
+
+### Attention
+
+The Attention network computes weighted encoded images of where the decoder should pay attention.
+
+Intuitively, how would you estimate the importance of a certain part of an image? You would need to be aware of the sequence you have generated so far, so you can look at the image and decide what needs describing next. For example, after you mention a man, it is logical to declare that he is holding a pizza.
+
+This is exactly what the Attention mechanism does – it considers the sequence generated thus far, and attends to the part of the image that needs describing next.
+
+
+![Attention Network](https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning/blob/master/img/att.png?raw=true)
+
+
+We will use `soft` attention, where the weights of the pixels add up to 1. If there are `p` pixels in our encoded image, then at each timestep `t` :
+
+![pixel probability](https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning/blob/master/img/weights.png?raw=true)
+
+This entire process is interpreted as **computing the probability that a pixel is the place to look to generate the next word.**
+
+### Model Overview
+
+![Model Overview](https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning/blob/master/img/model.png?raw=true)
+
+- Once the Encoder generates the encoded image, we transform the encoding to create the initial hidden state `h` (and cell state `C`) for the LSTM Decoder.
+- At each decode step,
+  -  the encoded image and the previous hidden state is used to generate weights for each pixel in the Attention network.
+  -  the previously generated word and the weighted average of the encoding are fed to the LSTM Decoder to generate the next word.
+
+### Prediction Algorithm: Beam Search
+
+We use a linear layer to transform the Decoder's output into a score for each word in the vocabulary.
+
+The straightforward – and greedy – option would be to choose the word with the highest score and use it to predict the next word. But this is not optimal because the rest of the sequence hinges on that first word you choose. If that choice isn't the best, everything that follows is sub-optimal. And it's not just the first word – each word in the sequence has consequences for the ones that succeed it.
+
+It might very well happen that if you'd chosen the third best word at that first step, and the second best word at the second step, and so on... that would be the best sequence you could generate.
+
+It would be best if we could somehow not decide until we've finished decoding completely, and choose the sequence that has the highest overall score from a basket of candidate sequences.
+
+Beam Search does exactly that, it has the algorithm:
+
+**1. Initialization:** Start with a single initial caption, with the `start` token.
+
+**2. Step-by-Step Generation:** At each decoding step, expand the top-k candidates from the previous step by predicting the next words using the language model. Calculate the probabilities of multiple candidate sequences by considering the next possible words and their associated probabilities.
+
+**3. Candidate Selection:** Among the generated candidate sequences, retain the top-k sequences with the highest probabilities. These sequences become the new candidates for the next decoding step.
+
+**4. Repeat:** Repeat steps 2 and 3 for a fixed number of decoding steps or until an `end` token is generated for all sequences.
+
+**5. Final Selection:** Once the decoding process is complete, choose the candidate sequence with the highest overall probability as the final generated caption.
+
+The key benefit of beam search lies in its ability to explore multiple potential caption sequences in parallel, ensuring that the generator produces captions that are not only contextually accurate but also exhibit diversity and creativity. Beam search strikes a balance between exploring alternative caption paths and maintaining computational efficiency, ultimately resulting in higher-quality image captions.
+
+![Beam Search](https://github.com/ACM40960/project-shrutig99/assets/118550614/951f38be-2d24-477b-b892-f8a585a4e153)
+
+As you can see, some sequences (striked out) may fail early, as they don't make it to the top k at the next step. Once k sequences (underlined) generate the <end> token, we choose the one with the highest score.
+
+
+## Metrics 
+
+To evaluate the model's performance on the validation set, we use the automated [BiLingual Evaluation Understudy (BLEU)](https://aclanthology.org/P02-1040.pdf) evaluation metric. This evaluates a generated caption against reference caption(s).
+
+The authors of the [Show, Attend and Tell](https://arxiv.org/abs/1502.03044) paper observe that correlation between the loss and the BLEU score breaks down after a point, so they recommend to stop training early on when the BLEU score begins to degrade, even if the loss continues to decrease.
+
+We used the BLEU tool available in the [NLTK module](https://www.nltk.org/_modules/nltk/translate/bleu_score.html).
+
+Note that there is considerable criticism of the BLEU score because it doesn't always correlate well with human judgment.
 
 ## Results
 
+Some predictions from our model:
+
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/9b1adbb2-4acc-4a71-81dd-de250aca3ee0)
+
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/955d9330-2dcf-4374-aa32-b4efe37bf952)
+
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/70959dec-17f0-4ce5-a878-cea1b1f751db)
 
 ## Conclusion 
 
