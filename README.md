@@ -193,8 +193,9 @@ The key benefit of beam search lies in its ability to explore multiple potential
 
 As you can see, some sequences (striked out) may fail early, as they don't make it to the top k at the next step. Once k sequences (underlined) generate the <end> token, we choose the one with the highest score.
 
+## Results
 
-## Metrics 
+### Metrics 
 
 To evaluate the model's performance on the validation set, we use the automated [BiLingual Evaluation Understudy (BLEU)](https://aclanthology.org/P02-1040.pdf) evaluation metric. This evaluates a generated caption against reference caption(s).
 
@@ -203,8 +204,6 @@ The authors of the [Show, Attend and Tell](https://arxiv.org/abs/1502.03044) pap
 We used the BLEU tool available in the [NLTK module](https://www.nltk.org/_modules/nltk/translate/bleu_score.html).
 
 Note that there is considerable criticism of the BLEU score because it doesn't always correlate well with human judgment.
-
-## Results
 
 Some predictions from our model:
 
