@@ -284,5 +284,5 @@ This project is under the [MIT License](https://github.com/ACM40960/project-shru
 - [Shruti Avinash Ghorpade](https://github.com/shrutig99) - shruti.ghorpade@ucdconnect.ie
 - [Aditya Pratap Singh](https://github.com/ACM40960/project-adityapratap) - aditya.p.singh@ucdconnect.in
   
-Feel free to reach out to us for any queries or collaborations! We would love to have any inputs or feedback.
+Feel free to reach out to us for any queries or collaborations! We would love to receive any inputs or feedback.
 
