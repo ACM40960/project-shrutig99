@@ -28,6 +28,8 @@ Key details about the Flickr8k dataset:
 
 The complete dataset can be downloaded from these two links: [Flickr8k_Dataset](https://github.com/jbrownlee/Datasets/releases/download/Flickr8k/Flickr8k_Dataset.zip) and [Flickr8k_Text](https://github.com/jbrownlee/Datasets/releases/download/Flickr8k/Flickr8k_text.zip)
 
+**Note:** Unzip the contents of the Flickr8k_Text folder directly in a folder containing the Flickr8k_Dataset folder.
+
 
 ## Installation
 
@@ -205,6 +207,14 @@ The authors of the [Show, Attend and Tell](https://arxiv.org/abs/1502.03044) pap
 We used the BLEU tool available in the [NLTK module](https://www.nltk.org/_modules/nltk/translate/bleu_score.html).
 
 Note that there is considerable criticism of the BLEU score because it doesn't always correlate well with human judgment.
+
+Scale of BLEU Score:
+
+- 0: A BLEU score of 0 suggests no overlap between the generated and reference text. The generated text is entirely different from the reference, indicating poor quality and low relevance.
+- 0 to 0.25: A BLEU score in this range indicates minimal to marginal overlap with the reference text. The generated text partially captures some elements from the reference, but the quality and relevance are still significantly lacking.
+- 0.25 to 0.5: A BLEU score within this range signifies moderate overlap with the reference text. The generated text manages to capture certain key aspects of the reference, but there's room for improvement in terms of fluency and precision.
+- 0.5 to 0.75: A BLEU score in this range indicates substantial overlap with the reference text. The generated text is considerably aligned with the reference, showcasing good quality and relevance.
+- 0.75 to 1: A BLEU score within this range suggests high alignment with the reference text. The generated text is of excellent quality and closely resembles the reference, demonstrating a strong grasp of context and language.
 
 Some predictions from our model:
 
