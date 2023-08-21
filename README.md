@@ -219,11 +219,17 @@ Scale of BLEU Score:
 
 Some predictions from our model:
 
-![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/9b1adbb2-4acc-4a71-81dd-de250aca3ee0)
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/6d984ffa-ce21-4ebe-a5a4-2d688e8be8a9)
 
-![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/955d9330-2dcf-4374-aa32-b4efe37bf952)
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/d5ec4bb0-350c-4c77-96c5-a254f7cf99e5)
 
-![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/70959dec-17f0-4ce5-a878-cea1b1f751db)
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/0f406736-d3b2-4d2e-91a1-0a164d40a59e)
+
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/0a97ff57-4c18-4d0c-9ee5-8423d9a1ef26)
+
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/5be83f9e-2fc9-4658-a28c-bdc5fdbf53d5)
+
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/784ba3e4-af61-4640-a548-5846a14e6adc)
 
 ## Conclusion 
 
