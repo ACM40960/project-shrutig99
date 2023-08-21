@@ -59,7 +59,7 @@ After installing these libraries, you should be able to use the code you provide
 
 Before feeding the Flickr8k data into the model, we first split the dataset and then process it in two steps.
 
-**Data Splitting:** The dataset is divided into training, validation, and test sets. The training set is used to train the model, the validation set is used for tuning hyperparameters, and the test set is used to evaluate the final model's performance.
+**Data Splitting:** The dataset is divided into training (6000 images), validation (1000 images), and test sets (1000 images). The training set is used to train the model, the validation set is used for tuning hyperparameters, and the test set is used to evaluate the final model's performance.
 
 After splitting the dataset, we process it in the following two steps:
 
