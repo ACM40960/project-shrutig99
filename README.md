@@ -264,6 +264,9 @@ I am profoundly grateful to Dr. Sarp Akcay for his exceptional guidance and stea
 8. Krizhevsky, I. Sutskever, and G. Hinton, "ImageNet classification with deep convolutional neural networks," in Advances in Neural Information Processing Systems (NIPS), 2012.
 9. G. Kulkarni, V. Premraj, V. Ordonez, S. Dhar, S. Li, Y. Choi, A. C. Berg, and T. L. Berg, "Babytalk: Understanding and generating simple image descriptions," IEEE Transactions on Pattern Analysis and Machine Intelligence (PAMI), vol. 35, no. 12, pp. 2891-2903, 2013.
 
+## License
+
+This project is under the [MIT License](https://github.com/ACM40960/project-shrutig99/blob/main/LICENSE)
 
 ## Authors
 
