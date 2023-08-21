@@ -149,10 +149,11 @@ This is exactly what the Attention mechanism does – it considers the sequence 
 
 ![Attention Network](https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning/blob/master/img/att.png?raw=true)
 
-
 We will use `soft` attention, where the weights of the pixels add up to 1. If there are `p` pixels in our encoded image, then at each timestep `t` :
 
-![pixel probability](https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning/blob/master/img/weights.png?raw=true)
+<p align="center">
+    <img src="https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning/blob/master/img/weights.png?raw=true"> 
+</p>
 
 This entire process is interpreted as **computing the probability that a pixel is the place to look to generate the next word.**
 
@@ -271,7 +272,7 @@ This project is under the [MIT License](https://github.com/ACM40960/project-shru
 ## Authors
 
 - [Shruti Avinash Ghorpade](https://github.com/shrutig99) - shruti.ghorpade@ucdconnect.ie
-- [Aditya Pratap Singh]() - aditya.singh@ucdconnect.ie
+- [Aditya Pratap Singh](https://github.com/ACM40960/project-adityapratap) - aditya.p.singh@ucdconnect.in
   
 Feel free to reach out to us for any queries or collaborations! We would love to have any inputs or feedback.
 
