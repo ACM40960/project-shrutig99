@@ -30,6 +30,7 @@ The complete dataset can be downloaded from these two links: [Flickr8k_Dataset](
 
 **Note:** Unzip the contents of the Flickr8k_Text folder directly in a folder containing the Flickr8k_Dataset folder.
 
+Alternatively, you can simply download the [Flickr8k Dataset folder](https://github.com/ACM40960/project-shrutig99/tree/main/Flickr8k%20Dataset)
 
 ## Installation
 
