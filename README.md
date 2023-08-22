@@ -219,17 +219,18 @@ Scale of BLEU Score:
 
 Some predictions from our model:
 
-![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/6d984ffa-ce21-4ebe-a5a4-2d688e8be8a9)
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/33f295a2-08dc-461a-ae6b-8407f7d5d6d6)
 
-![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/d5ec4bb0-350c-4c77-96c5-a254f7cf99e5)
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/63216669-aeb3-4a12-b301-579fdc39abce)
 
-![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/0f406736-d3b2-4d2e-91a1-0a164d40a59e)
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/8eec585b-5432-461e-8935-4adb4e4ffb4d)
 
-![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/0a97ff57-4c18-4d0c-9ee5-8423d9a1ef26)
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/ee37ba3e-6ccf-4d12-a96d-dc5849be4d35)
 
-![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/5be83f9e-2fc9-4658-a28c-bdc5fdbf53d5)
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/a6a81260-285c-4407-aac1-2a11a563b2d8)
 
-![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/784ba3e4-af61-4640-a548-5846a14e6adc)
+![image](https://github.com/ACM40960/project-shrutig99/assets/118550614/84329f8c-9d0d-47a8-8c46-3c72710bfd67)
+
 
 ## Conclusion 
 
